@@ -67,31 +67,31 @@ ENV DRUPAL_VERSION 8.7.7
 ENV DRUPAL_MD5 eda95eb4c6567049c661818ffe800d11
 
 # use this if building from scratch -- Comment out the tar file below
-#RUN set -eux; \
-#	curl -fSL "https://ftp.drupal.org/files/projects/drupal-${DRUPAL_VERSION}.tar.gz" -o drupal.tar.gz; \
-#	echo "${DRUPAL_MD5} *drupal.tar.gz" | md5sum -c -; \
-#	tar -xz --strip-components=1 -f drupal.tar.gz; \
-#	rm drupal.tar.gz; \
-#	chown -R www-data:www-data sites modules themes
+RUN set -eux; \
+	curl -fSL "https://ftp.drupal.org/files/projects/drupal-${DRUPAL_VERSION}.tar.gz" -o drupal.tar.gz; \
+	echo "${DRUPAL_MD5} *drupal.tar.gz" | md5sum -c -; \
+	tar -xz --strip-components=1 -f drupal.tar.gz; \
+	rm drupal.tar.gz; \
+	chown -R www-data:www-data sites modules themes
 
 
 
-COPY druple.tar.gz /var/www/druple.tar.gz
-RUN cd /var/www && gunzip druple.tar.gz && tar -xvf druple.tar 
+##COPY druple.tar.gz /var/www/druple.tar.gz
+##RUN cd /var/www && gunzip druple.tar.gz && tar -xvf druple.tar 
 
-RUN rm -rf /var/www/druple.tar
+##RUN rm -rf /var/www/druple.tar
 
-COPY init.sh /init.sh
-
-
-ADD settings.php /var/www/html/sites/default/settings.php
-#RUN chown -R  www-data:www-data /var/www/html
-
-RUN mkdir -p /var/www/html/sites-backup
-
-RUN cp -R /var/www/html/sites /var/www/html/sites-backup
+##COPY init.sh /init.sh
 
 
-CMD ["/init.sh"]
+##ADD settings.php /var/www/html/sites/default/settings.php
+##RUN chown -R  www-data:www-data /var/www/html
+
+##RUN mkdir -p /var/www/html/sites-backup
+
+##RUN cp -R /var/www/html/sites /var/www/html/sites-backup
+
+
+##CMD ["/init.sh"]
 
 # vim:set ft=dockerfile:
