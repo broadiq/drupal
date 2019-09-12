@@ -2,7 +2,7 @@
 
 if [ -z "$(ls -A /var/www/html/sites)" ]; then
    echo "Copying initial files"
-   cp -R /var/www/html/sites-backup/sites /var/www/html/sites
+   cp -R /var/www/html/sites-backup/sites /var/www/html/
 else 
    echo "Not Empty"
 fi
