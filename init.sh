@@ -6,3 +6,5 @@ if [ -z "$(ls -A /var/www/html/sites)" ]; then
 else 
    echo "Not Empty"
 fi
+
+apache2-foreground

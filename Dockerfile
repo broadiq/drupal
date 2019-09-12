@@ -81,17 +81,17 @@ RUN set -eux; \
 
 ##RUN rm -rf /var/www/druple.tar
 
-##COPY init.sh /init.sh
+COPY init.sh /init.sh
 
 
 ##ADD settings.php /var/www/html/sites/default/settings.php
 ##RUN chown -R  www-data:www-data /var/www/html
 
-##RUN mkdir -p /var/www/html/sites-backup
+RUN mkdir -p /var/www/html/sites-backup
 
-##RUN cp -R /var/www/html/sites /var/www/html/sites-backup
+RUN cp -R /var/www/html/sites /var/www/html/sites-backup
 
 
-##CMD ["/init.sh"]
+CMD ["/init.sh"]
 
 # vim:set ft=dockerfile:
