@@ -83,11 +83,12 @@ RUN set -eux; \
 
 COPY init.sh /init.sh
 
-
 ##ADD settings.php /var/www/html/sites/default/settings.php
 ##RUN chown -R  www-data:www-data /var/www/html
 
 RUN mkdir -p /var/www/html/sites-backup
+
+COPY .htaccess /var/www/html/sites-backup
 
 RUN cp -R /var/www/html/sites /var/www/html/sites-backup
 
